@@ -9,13 +9,11 @@ In this repo there is going to be a website about myself. There are two goals:
 
 
 # Personal Werbsite 
-├── Home
-├── About Me
-├── Skills
-├── Projects
-├── Blog
-├── Resume
-├── Contact
+- About Me
+- Skills 
+- Expirience 
+- Project 
+- Etc....
 
 
 # CI/CD Pipeline 
