@@ -1,16 +1,17 @@
 {
-  "name": "lohnabbrechnung-multipager",
+  "name": "software",
   "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "better-sqlite3": "^11.7.2",
-    "sqlite3": "^5.1.7"
+    "better-sqlite3": "^13.0.1",
+    "express": "^5.2.1"
   }
 }
