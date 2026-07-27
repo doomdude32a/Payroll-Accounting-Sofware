@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+      if (!loggedInUser) {
+        window.location.href = "auth.html";
+      }
+      if (!sessionStorage.getItem("loggedInUser")) {
+        const localUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (localUser) {
+          sessionStorage.setItem("loggedInUser", JSON.stringify(localUser));
+        } else {
+          window.location.href = "auth.html";
+        }
+      }
+
+      document
+        .getElementById("signOutButton")
+        ?.addEventListener("click", () => {
+          sessionStorage.removeItem("loggedInUser");
+          localStorage.removeItem("loggedInUser");
+          window.location.href = "auth.html";
+        });
+    </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="index.html"
+          style="color: white; font-weight: bold"
+          >Lohnabrechnung</a
+        >
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="eingabe.html" style="color: white"
+                >Eingabe</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ausgabe.html" style="color: white"
+                >Ausgabe</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html" style="color: white"
+                >Profil</a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          id="signOutButton"
+          class="btn btn-danger"
+          style="font-size: 16px"
+        >
+          Abmelden
+        </button>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <h2 class="text-center">Profil</h2>
+      <div id="profilAnzeigen" class="d-none">
+        <table class="table table-bordered mt-4">
+          <tbody>
+            <tr>
+              <th>Vorname</th>
+              <td id="anzeigeVorname">Nicht angegeben</td>
+            </tr>
+            <tr>
+              <th>Personalnummer</th>
+              <td id="anzeigePersonalnummer">Nicht angegeben</td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <td id="anzeigeName">Nicht angegeben</td>
+            </tr>
+            <tr>
+              <th>Wohnort</th>
+              <td id="anzeigeWohnort">Nicht angegeben</td>
+            </tr>
+            <tr>
+              <th>Arbeit</th>
+              <td id="anzeigeArbeit">Nicht angegeben</td>
+            </tr>
+            <tr>
+              <th>Arbeitsplatz</th>
+              <td id="anzeigeArbeitsplatz">Nicht angegeben</td>
+            </tr>
+          </tbody>
+        </table>
+        <button id="bearbeitenButton" class="btn btn-primary mt-3">
+          Bearbeiten
+        </button>
+      </div>
+      <form id="profilForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="vorname" class="form-label">Vorname</label>
+            <input type="text" class="form-control" id="vorname" />
+          </div>
+          <div class="col-md-6">
+            <label for="personalnummer" class="form-label"
+              >Personalnummer</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="personalnummer"
+              min="0"
+              placeholder="0 oder positive Zahl"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" />
+          </div>
+          <div class="col-md-12">
+            <label for="wohnort" class="form-label">Wohnort</label>
+            <input type="text" class="form-control" id="wohnort" />
+          </div>
+          <div class="col-md-12">
+            <label for="arbeit" class="form-label">Arbeit</label>
+            <input type="text" class="form-control" id="arbeit" />
+          </div>
+          <div class="col-md-12">
+            <label for="arbeitsplatz" class="form-label">Arbeitsplatz</label>
+            <input type="text" class="form-control" id="arbeitsplatz" />
+          </div>
+          <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-primary w-100">
+              Speichern
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="profil.js"></script>
+  </body>
+</html>

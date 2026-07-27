@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lohnabrechnung Verfassen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
+      if (!loggedInUser) {
+        window.location.href = "auth.html";
+      }
+      if (!sessionStorage.getItem("loggedInUser")) {
+        const localUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (localUser) {
+          sessionStorage.setItem("loggedInUser", JSON.stringify(localUser));
+        } else {
+          window.location.href = "auth.html";
+        }
+      }
+
+      document
+        .getElementById("signOutButton")
+        ?.addEventListener("click", () => {
+          sessionStorage.removeItem("loggedInUser");
+          localStorage.removeItem("loggedInUser");
+          window.location.href = "auth.html";
+        });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="index.html"
+          style="color: white; font-weight: bold"
+          >Lohnabrechnung</a
+        >
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="eingabe.html" style="color: white"
+                >Eingabe</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ausgabe.html" style="color: white"
+                >Ausgabe</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html" style="color: white"
+                >Profil</a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          id="signOutButton"
+          class="btn btn-danger"
+          style="font-size: 16px"
+        >
+          Abmelden
+        </button>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <h1 class="text-center">Lohnabrechnung Eingabe</h1>
+      <div class="card p-4">
+        <form id="salaryForm">
+          <div class="mb-3">
+            <label for="role" class="form-label">Rolle:</label>
+            <select class="form-control" id="role" required>
+              <option value="arbeitnehmer">Arbeitnehmer</option>
+              <option value="arbeitgeber">Arbeitgeber</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="abrechnungsdatum" class="form-label"
+              >Lohnabrechnungsdatum:</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="abrechnungsdatum"
+              required
+            />
+            <small id="abrechnungsdatum-error" class="text-danger"></small>
+          </div>
+          <div class="mb-3">
+            <label for="monatslohn" class="form-label">Monatslohn (CHF):</label>
+            <input
+              type="number"
+              class="form-control"
+              id="monatslohn"
+              placeholder="Geben Sie den Monatslohn ein"
+              required
+            />
+            <small id="monatslohn-error" class="text-danger"></small>
+          </div>
+          <div class="mb-3">
+            <label for="alter" class="form-label">Alter:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="alter"
+              placeholder="Geben Sie Ihr Alter ein"
+              required
+              min="0"
+            />
+            <small id="alter-error" class="text-danger"></small>
+          </div>
+          <div class="mb-3">
+            <label for="anzahlKinder" class="form-label"
+              >Anzahl der anspruchsberechtigte Kinder:</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="anzahlKinder"
+              placeholder="Geben Sie die Anzahl der anspruchsberechtigte Kinder ein"
+              required
+            />
+            <small id="anzahlKinder-error" class="text-danger"></small>
+          </div>
+          <div class="mb-3">
+            <label for="freiwilligePK" class="form-label"
+              >Zusätzliche freiwillige PK-Abgabe (%):</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="freiwilligePK"
+              placeholder="Prozentsatz für zusätzliche PK-Abgabe eingeben"
+              min="0"
+              max="15"
+              step="0.1"
+            />
+            <small id="freiwilligePK-error" class="text-danger"></small>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
+            Berechnen und Speichern
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="profil.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  </body>
+</html>
