@@ -3,18 +3,13 @@ Website about myself
 
 In this repo there is going to be a website about myself. There are two goals: 
 
-1. Create a Website about myself that list my expirience/projects etc. which I can share when I am sending out my cv's. 
+1. Create a Application that does the Payroll Accounting
 
 2. A CI/CD Pipline that test and deploys my website
 
 
-# Personal Werbsite 
-- About Me
-- Skills 
-- Expirience 
-- Project 
-- Etc....
-
+# Application 
+....
 
 # CI/CD Pipeline 
 
