@@ -1,10 +1,10 @@
 {
-  "name": "software",
+  "name": "Payroll-Accounting-App",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "license": "ISC",
-  "author": "",
+  "author": "angel.angelov",
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
