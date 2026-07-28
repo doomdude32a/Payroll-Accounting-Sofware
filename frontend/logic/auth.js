@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       alert("Login erfolgreich!");
       localStorage.setItem("loggedInUser", JSON.stringify(existingUser));
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     }
   });
 
