@@ -1,0 +1,28 @@
+
+.navbar-brand-custom {
+  color: white;
+  font-weight: bold;
+}
+
+.nav-link-white {
+  color: white;
+}
+
+.btn-signout {
+  font-size: 16px;
+}
+
+.compare-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.compare-section button {
+  display: block;
+}
+
+.comparison-table-hidden {
+  display: none;
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
